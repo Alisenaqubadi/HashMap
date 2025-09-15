@@ -5,12 +5,14 @@ This project provides a custom implementation of a HashMap data structure in Jav
 ## Features
 
 ### HashMap
+
 - **Set Key-Value Pairs**: Add key-value pairs to the hash map.
 - **Get Values**: Retrieve values by their keys.
 - **Dynamic Resizing**: Automatically resizes the hash table when it reaches 75% capacity.
 - **Collision Handling**: Uses linked lists to handle hash collisions.
 
 ### Linked Lists
+
 - **Append and Prepend**: Add elements to the end or beginning of the list.
 - **Search**: Check if a value exists or find its index.
 - **Size and Traversal**: Get the size of the list and traverse its elements.
@@ -26,24 +28,26 @@ This project provides a custom implementation of a HashMap data structure in Jav
 ## Usage
 
 ### Example Code
-```javascript
-import { HashMap } from "./src/HashMap.js";
 
-const map = new HashMap();
+```javascript
+import { HashMap } from './src/HashMap.js'
+
+const map = new HashMap()
 
 // Adding key-value pairs
-map.set("dog", "bark");
-map.set("cat", "meow");
+map.set('dog', 'bark')
+map.set('cat', 'meow')
 
 // Retrieving values
-console.log(map.get("dog")); // Output: "bark"
-console.log(map.get("cat")); // Output: "meow"
+console.log(map.get('dog')) // Output: "bark"
+console.log(map.get('cat')) // Output: "meow"
 
 // Handling collisions
-map.set("god", "reverse");
-console.log(map.get("god")); // Output: "reverse"
+map.set('god', 'reverse')
+console.log(map.get('god')) // Output: "reverse"
 
 // Dynamic resizing
-map.set("x", "value1");
-map.set("y", "value2");
-map.set("z", "value3");
+map.set('x', 'value1')
+map.set('y', 'value2')
+map.set('z', 'value3')
+```
