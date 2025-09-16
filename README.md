@@ -6,24 +6,31 @@ This project provides a custom implementation of a HashMap data structure in Jav
 
 ### HashMap
 
-- **Set Key-Value Pairs**: Add key-value pairs to the hash map.
-- **Get Values**: Retrieve values by their keys.
-- **Dynamic Resizing**: Automatically resizes the hash table when it reaches 75% capacity.
-- **Collision Handling**: Uses linked lists to handle hash collisions.
+- **set(key, value)**: Add or update a key-value pair in the hash map.  
+- **get(key)**: Retrieve a value by its key. Returns `null` if not found.  
+- **has(key)**: Check if a key exists in the hash map. Returns `true` or `false`.  
+- **remove(key)**: Remove a key-value pair by its key. Returns the removed node or `false` if not found.  
+- **length()**: Returns the total number of key-value pairs in the hash map.  
+- **keys()**: Returns an array of all keys.  
+- **values()**: Returns an array of all values.  
+- **entries()**: Returns an array of `[key, value]` pairs.  
+- **clear()**: Resets the hash map back to its initial state.  
+- **Dynamic Resizing**: Automatically resizes when the hash map reaches 75% capacity.  
 
 ### Linked Lists
 
-- **Append and Prepend**: Add elements to the end or beginning of the list.
-- **Search**: Check if a value exists or find its index.
-- **Size and Traversal**: Get the size of the list and traverse its elements.
-- **Node Management**: Access and manipulate nodes directly.
+- **append(value)**: Add a new node at the end.  
+- **prepend(value)**: Add a new node at the beginning.  
+- **removeAt(index)**: Remove a node at a specific index.  
+- **getNode()**: Retrieve the head node.  
+- **search / traversal**: Iterate or find elements in the list.  
 
 ## How It Works
 
-1. **Hashing**: Keys are hashed using a custom hash function.
-2. **Buckets**: The hash map uses an array of buckets, where each bucket is a linked list.
-3. **Collision Resolution**: When multiple keys hash to the same bucket, their values are stored in the linked list.
-4. **Dynamic Resizing**: When the hash map is 75% full, it resizes to the next prime number greater than the square of its current size.
+1. **Hashing**: Keys are hashed with a custom function.  
+2. **Buckets**: Each bucket is a linked list, allowing multiple entries per index.  
+3. **Collision Resolution**: Collisions are handled via chaining (linked lists).  
+4. **Dynamic Resizing**: When the table is 75% full, it resizes to the next prime number greater than the square of its current size.  
 
 ## Usage
 
@@ -39,15 +46,22 @@ map.set('dog', 'bark')
 map.set('cat', 'meow')
 
 // Retrieving values
-console.log(map.get('dog')) // Output: "bark"
-console.log(map.get('cat')) // Output: "meow"
+console.log(map.get('dog')) // "bark"
+console.log(map.get('cat')) // "meow"
 
-// Handling collisions
-map.set('god', 'reverse')
-console.log(map.get('god')) // Output: "reverse"
+// Checking if a key exists
+console.log(map.has('dog')) // true
+console.log(map.has('bird')) // false
 
-// Dynamic resizing
-map.set('x', 'value1')
-map.set('y', 'value2')
-map.set('z', 'value3')
-```
+// Removing a key
+map.remove('cat')
+console.log(map.get('cat')) // null
+
+// Getting all keys, values, and entries
+console.log(map.keys())    // ["dog"]
+console.log(map.values())  // ["bark"]
+console.log(map.entries()) // [["dog", "bark"]]
+
+// Clearing the map
+map.clear()
+console.log(map.length()) // 0

@@ -1,9 +1,9 @@
 import { linkedLists } from './linked-lists.js'
 
 class HashMap {
-  bucketSize = 39
-  buckets = new Array(this.bucketSize)
-  newBuckets
+  bucketSize = 39;
+  buckets = new Array(this.bucketSize);
+  newBuckets;
 
   reset(key, value) {
     const newKey = hash(key)
@@ -75,6 +75,107 @@ class HashMap {
     }
     return null
   }
+
+  has(){
+    const newKey = hash(key)
+    const modelOfKey = newKey % this.buckets.length
+    let bucket = this.buckets[modelOfKey]?.getNode()
+
+    while (bucket) {
+      if (bucket.value.key === key) {
+        return true
+      }
+      bucket = bucket.next
+    }
+    return false
+  }
+
+  remove(key) {
+    const newKey = hash(key)
+    const modelOfKey = newKey % this.buckets.length
+    let bucket = this.buckets[modelOfKey]?.getNode()
+    let index = 0;
+    while (bucket) {
+      if (bucket.value.key === key) {
+        const order = this.buckets[modelOfKey]?.removeAt(index)
+        return order
+      }
+      bucket = bucket.next
+      index++;
+    }
+    return false
+}
+
+  length(){
+    let index = 0;
+    for(let i = 0; i < this.buckets.length; i++){
+      if (this.buckets[i] instanceof linkedLists) {
+        let bucket = this.buckets[i]?.getNode()
+        while (bucket) {
+          if (bucket.value.key) {
+            index++;
+          }
+        bucket = bucket.next
+        }
+      }
+    }
+    return index;
+  }
+
+  keys(){
+    let keys = [];
+    for(let i = 0; i < this.buckets.length; i++){
+      if (this.buckets[i] instanceof linkedLists) {
+        let bucket = this.buckets[i]?.getNode()
+        while (bucket) {
+          if (bucket.value.key) {
+            keys.push(bucket.value.key)
+          }
+        bucket = bucket.next
+        }
+      }
+    }
+    return keys;
+  }
+
+  values(){
+    let values = [];
+    for(let i = 0; i < this.buckets.length; i++){
+      if (this.buckets[i] instanceof linkedLists) {
+        let bucket = this.buckets[i]?.getNode()
+        while (bucket) {
+          if (bucket.value.key) {
+            values.push(bucket.value.value)
+          }
+        bucket = bucket.next
+        }
+      }
+    }
+    return values;
+  }
+
+  entries(){
+    let entries = [];
+    for(let i = 0; i < this.buckets.length; i++){
+      if (this.buckets[i] instanceof linkedLists) {
+        let bucket = this.buckets[i]?.getNode()
+        while (bucket) {
+          if (bucket.value.key) {
+            entries.push([bucket.value.key , bucket.value.value])
+          }
+        bucket = bucket.next
+        }
+      }
+    }
+    return entries;
+  }
+
+  clear(){
+    this.bucketSize = 39;
+    this.buckets = new Array(this.bucketSize);
+    }
+  
+
 }
 
 function hash(key) {

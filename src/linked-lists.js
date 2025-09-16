@@ -22,7 +22,13 @@ class linkedLists {
   }
 
   prepend(value) {
-    this.head = new Node(value, this.head)
+    const newNode = new Node(value)
+    if (!this.head) {
+      this.head = newNode
+    } else {
+      newNode.next = this.head
+      this.head = newNode
+    }
   }
 
   toString() {
@@ -100,6 +106,34 @@ class linkedLists {
   getNode() {
     return this.head
   }
+
+  removeAt(index) {
+    // Handle edge cases
+    if (index < 0 || !this.head) return false;
+    
+    // Special case: removing first node
+    if (index === 0) {
+        this.head = this.head.next;
+        return true;
+    }
+    
+    let current = this.head;
+    let previous = null;
+    
+    // Traverse to find the node at index
+    for (let i = 0; i < index && current; i++) {
+        previous = current;
+        current = current.next;
+    }
+    
+    // If index is out of bounds
+    if (!current) return false;
+    
+    // Remove the node by updating the link
+    previous.next = current.next;
+    return true; // return the removed value
+}
+
 }
 
 export { linkedLists }
