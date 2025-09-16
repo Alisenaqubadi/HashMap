@@ -33,13 +33,9 @@ console.log('k:', Map.get('k')) // "kay"
 
 Map.set('k', 'hahaha')
 console.log('k:', Map.get('k')) // "kay"
-console.log(Map.remove("k"))
+console.log(Map.remove('k'))
 console.log('k:', Map.get('k')) // "kay"
-console.log("length", Map.length())
-console.log("keys", Map.keys())
-console.log("keys", Map.values())
+console.log('length', Map.length())
+console.log('keys', Map.keys())
+console.log('keys', Map.values())
 console.log(Map.entries())
-
-
-
-

@@ -109,31 +109,30 @@ class linkedLists {
 
   removeAt(index) {
     // Handle edge cases
-    if (index < 0 || !this.head) return false;
-    
+    if (index < 0 || !this.head) return false
+
     // Special case: removing first node
     if (index === 0) {
-        this.head = this.head.next;
-        return true;
+      this.head = this.head.next
+      return true
     }
-    
-    let current = this.head;
-    let previous = null;
-    
+
+    let current = this.head
+    let previous = null
+
     // Traverse to find the node at index
     for (let i = 0; i < index && current; i++) {
-        previous = current;
-        current = current.next;
+      previous = current
+      current = current.next
     }
-    
-    // If index is out of bounds
-    if (!current) return false;
-    
-    // Remove the node by updating the link
-    previous.next = current.next;
-    return true; // return the removed value
-}
 
+    // If index is out of bounds
+    if (!current) return false
+
+    // Remove the node by updating the link
+    previous.next = current.next
+    return true // return the removed value
+  }
 }
 
 export { linkedLists }
